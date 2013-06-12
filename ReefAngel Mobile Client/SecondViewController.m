@@ -15,19 +15,20 @@
 @synthesize enteredURL, scrollView, url, port, updatedURL, temp1, temp2, temp3, response;
 @synthesize relayExp, relay1, relay2, relay3, relay4, relay5, relay6, relay7, relay8;
 @synthesize exprelay1, exprelay2, exprelay3, exprelay4, exprelay5, exprelay6, exprelay7, exprelay8, userName;
-@synthesize exprelay1Label, exprelay2Label, exprelay3Label, exprelay4Label, exprelay5Label, exprelay6Label, exprelay7Label, exprelay8Label, tempScale, loadNames, bannerUrl, hideNames, showNames, receivedData, raURL;
+@synthesize exp2relay1, exp2relay2, exp2relay3, exp2relay4, exp2relay5, exp2relay6, exp2relay7, exp2relay8;
+@synthesize exprelay1Label, exprelay2Label, exprelay3Label, exprelay4Label, exprelay5Label, exprelay6Label, exprelay7Label, exprelay8Label, exp2relay1Label, exp2relay2Label, exp2relay3Label, exp2relay4Label, exp2relay5Label, exp2relay6Label, exp2relay7Label, exp2relay8Label, tempScale, loadNames, bannerUrl, hideNames, showNames, receivedData, raURL;
 @synthesize  relay1Label, relay2Label, relay3Label, relay4Label, relay5Label, relay6Label, relay7Label, relay8Label, temp1Label, temp2Label, temp3Label, directConnect;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 
 - (void)viewDidLoad
 {
     
-    [super viewDidLoad];   
+    [super viewDidLoad];
     [self loadData];
     [self.scrollView setScrollEnabled:YES];
     if(self.relayExp.on)    
     {
-        [self.scrollView setContentSize:CGSizeMake(320, 1200)];
+        [self.scrollView setContentSize:CGSizeMake(320, 1500)];
     }
     else
     {
@@ -79,6 +80,15 @@
         [self.exprelay6 resignFirstResponder];
         [self.exprelay7 resignFirstResponder];
         [self.exprelay8 resignFirstResponder];
+    
+        [self.exp2relay1 resignFirstResponder];
+        [self.exp2relay2 resignFirstResponder];
+        [self.exp2relay3 resignFirstResponder];
+        [self.exp2relay4 resignFirstResponder];
+        [self.exp2relay5 resignFirstResponder];
+        [self.exp2relay6 resignFirstResponder];
+        [self.exp2relay7 resignFirstResponder];
+        [self.exp2relay8 resignFirstResponder];
     }
     return YES;
 }
@@ -122,6 +132,15 @@
         [self.exprelay6 resignFirstResponder];
         [self.exprelay7 resignFirstResponder];
         [self.exprelay8 resignFirstResponder];
+       
+        [self.exp2relay1 resignFirstResponder];
+        [self.exp2relay2 resignFirstResponder];
+        [self.exp2relay3 resignFirstResponder];
+        [self.exp2relay4 resignFirstResponder];
+        [self.exp2relay5 resignFirstResponder];
+        [self.exp2relay6 resignFirstResponder];
+        [self.exp2relay7 resignFirstResponder];
+        [self.exp2relay8 resignFirstResponder];
     }
      
 
@@ -249,6 +268,15 @@
             [Dictionary setObject: self.exprelay6.text forKey: @"ExpRelay6"];
             [Dictionary setObject: self.exprelay7.text forKey: @"ExpRelay7"];
             [Dictionary setObject: self.exprelay8.text forKey: @"ExpRelay8"];
+        
+            [Dictionary setObject: self.exp2relay1.text forKey: @"Exp2Relay1"];
+            [Dictionary setObject: self.exp2relay2.text forKey: @"Exp2Relay2"];
+            [Dictionary setObject: self.exp2relay3.text forKey: @"Exp2Relay3"];
+            [Dictionary setObject: self.exp2relay4.text forKey: @"Exp2Relay4"];
+            [Dictionary setObject: self.exp2relay5.text forKey: @"Exp2Relay5"];
+            [Dictionary setObject: self.exp2relay6.text forKey: @"Exp2Relay6"];
+            [Dictionary setObject: self.exp2relay7.text forKey: @"Exp2Relay7"];
+            [Dictionary setObject: self.exp2relay8.text forKey: @"Exp2Relay8"];
         }
         else
         {
@@ -311,6 +339,15 @@
         self.exprelay6.text = [restored objectForKey:@"ExpRelay6"];
         self.exprelay7.text = [restored objectForKey:@"ExpRelay7"];
         self.exprelay8.text = [restored objectForKey:@"ExpRelay8"];
+        
+        self.exp2relay1.text = [restored objectForKey:@"Exp2Relay1"];
+        self.exp2relay2.text = [restored objectForKey:@"Exp2Relay2"];
+        self.exp2relay3.text = [restored objectForKey:@"Exp2Relay3"];
+        self.exp2relay4.text = [restored objectForKey:@"Exp2Relay4"];
+        self.exp2relay5.text = [restored objectForKey:@"Exp2Relay5"];
+        self.exp2relay6.text = [restored objectForKey:@"Exp2Relay6"];
+        self.exp2relay7.text = [restored objectForKey:@"Exp2Relay7"];
+        self.exp2relay8.text = [restored objectForKey:@"Exp2Relay8"];
     }
 
 }
@@ -334,8 +371,17 @@
         self.exprelay6.text = [restored objectForKey:@"ExpRelay6"];
         self.exprelay7.text = [restored objectForKey:@"ExpRelay7"];
         self.exprelay8.text = [restored objectForKey:@"ExpRelay8"];
+        
+        self.exp2relay1.text = [restored objectForKey:@"Exp2Relay1"];
+        self.exp2relay2.text = [restored objectForKey:@"Exp2Relay2"];
+        self.exp2relay3.text = [restored objectForKey:@"Exp2Relay3"];
+        self.exp2relay4.text = [restored objectForKey:@"Exp2Relay4"];
+        self.exp2relay5.text = [restored objectForKey:@"Exp2Relay5"];
+        self.exp2relay6.text = [restored objectForKey:@"Exp2Relay6"];
+        self.exp2relay7.text = [restored objectForKey:@"Exp2Relay7"];
+        self.exp2relay8.text = [restored objectForKey:@"Exp2Relay8"];
         if (self.loadNames.hidden == YES) {
-            [self.scrollView setContentSize:CGSizeMake(320, 1100)];
+            [self.scrollView setContentSize:CGSizeMake(320, 1400)];
             
             
             self.exprelay1Label.hidden = NO;
@@ -354,6 +400,23 @@
             self.exprelay6.hidden = NO;
             self.exprelay7.hidden = NO;
             self.exprelay8.hidden = NO;
+        
+            self.exp2relay1Label.hidden = NO;
+            self.exp2relay2Label.hidden = NO;
+            self.exp2relay3Label.hidden = NO;
+            self.exp2relay4Label.hidden = NO;
+            self.exp2relay5Label.hidden = NO;
+            self.exp2relay6Label.hidden = NO;
+            self.exp2relay7Label.hidden = NO;
+            self.exp2relay8Label.hidden = NO;
+            self.exp2relay1.hidden = NO;
+            self.exp2relay2.hidden = NO;
+            self.exp2relay3.hidden = NO;
+            self.exp2relay4.hidden = NO;
+            self.exp2relay5.hidden = NO;
+            self.exp2relay6.hidden = NO;
+            self.exp2relay7.hidden = NO;
+            self.exp2relay8.hidden = NO;
         }
 
          
@@ -378,7 +441,24 @@ else
         self.exprelay6.hidden = YES;
         self.exprelay7.hidden = YES;
         self.exprelay8.hidden = YES;
-     
+
+        self.exp2relay1Label.hidden = YES;
+        self.exp2relay2Label.hidden = YES;
+        self.exp2relay3Label.hidden = YES;
+        self.exp2relay4Label.hidden = YES;
+        self.exp2relay5Label.hidden = YES;
+        self.exp2relay6Label.hidden = YES;
+        self.exp2relay7Label.hidden = YES;
+        self.exp2relay8Label.hidden = YES;
+        self.exp2relay1.hidden = YES;
+        self.exp2relay2.hidden = YES;
+        self.exp2relay3.hidden = YES;
+        self.exp2relay4.hidden = YES;
+        self.exp2relay5.hidden = YES;
+        self.exp2relay6.hidden = YES;
+        self.exp2relay7.hidden = YES;
+        self.exp2relay8.hidden = YES;
+    
 }
 
 }
@@ -433,7 +513,7 @@ else
         self.temp2Label.hidden = NO;
         self.temp3Label.hidden = NO;
         if (self.relayExp.on) {
-            [self.scrollView setContentSize:CGSizeMake(320, 1100)];
+            [self.scrollView setContentSize:CGSizeMake(320, 1400)];
             self.exprelay1Label.hidden = NO;
             self.exprelay2Label.hidden = NO;
             self.exprelay3Label.hidden = NO;
@@ -450,6 +530,22 @@ else
             self.exprelay6.hidden = NO;
             self.exprelay7.hidden = NO;
             self.exprelay8.hidden = NO;
+            self.exp2relay1Label.hidden = NO;
+            self.exp2relay2Label.hidden = NO;
+            self.exp2relay3Label.hidden = NO;
+            self.exp2relay4Label.hidden = NO;
+            self.exp2relay5Label.hidden = NO;
+            self.exp2relay6Label.hidden = NO;
+            self.exp2relay7Label.hidden = NO;
+            self.exp2relay8Label.hidden = NO;
+            self.exp2relay1.hidden = NO;
+            self.exp2relay2.hidden = NO;
+            self.exp2relay3.hidden = NO;
+            self.exp2relay4.hidden = NO;
+            self.exp2relay5.hidden = NO;
+            self.exp2relay6.hidden = NO;
+            self.exp2relay7.hidden = NO;
+            self.exp2relay8.hidden = NO;
         }
     }
     if (but.tag == 2) {
@@ -495,6 +591,23 @@ else
             self.exprelay6.hidden = YES;
             self.exprelay7.hidden = YES;
             self.exprelay8.hidden = YES;
+
+            self.exp2relay1Label.hidden = YES;
+            self.exp2relay2Label.hidden = YES;
+            self.exp2relay3Label.hidden = YES;
+            self.exp2relay4Label.hidden = YES;
+            self.exp2relay5Label.hidden = YES;
+            self.exp2relay6Label.hidden = YES;
+            self.exp2relay7Label.hidden = YES;
+            self.exp2relay8Label.hidden = YES;
+            self.exp2relay1.hidden = YES;
+            self.exp2relay2.hidden = YES;
+            self.exp2relay3.hidden = YES;
+            self.exp2relay4.hidden = YES;
+            self.exp2relay5.hidden = YES;
+            self.exp2relay6.hidden = YES;
+            self.exp2relay7.hidden = YES;
+            self.exp2relay8.hidden = YES;
         }
     }
 }
@@ -583,6 +696,15 @@ else
         self.exprelay6.text = banner.R16N;
         self.exprelay7.text = banner.R17N;
         self.exprelay8.text = banner.R18N;
+       
+        self.exp2relay1.text = banner.R21N;
+        self.exp2relay2.text = banner.R22N;
+        self.exp2relay3.text = banner.R23N;
+        self.exp2relay4.text = banner.R24N;
+        self.exp2relay5.text = banner.R25N;
+        self.exp2relay6.text = banner.R26N;
+        self.exp2relay7.text = banner.R27N;
+        self.exp2relay8.text = banner.R28N;
         self.exprelay1Label.hidden = NO;
         self.exprelay2Label.hidden = NO;
         self.exprelay3Label.hidden = NO;
@@ -599,6 +721,22 @@ else
         self.exprelay6.hidden = NO;
         self.exprelay7.hidden = NO;
         self.exprelay8.hidden = NO;
+        self.exp2relay1Label.hidden = NO;
+        self.exp2relay2Label.hidden = NO;
+        self.exp2relay3Label.hidden = NO;
+        self.exp2relay4Label.hidden = NO;
+        self.exp2relay5Label.hidden = NO;
+        self.exp2relay6Label.hidden = NO;
+        self.exp2relay7Label.hidden = NO;
+        self.exp2relay8Label.hidden = NO;
+        self.exp2relay1.hidden = NO;
+        self.exp2relay2.hidden = NO;
+        self.exp2relay3.hidden = NO;
+        self.exp2relay4.hidden = NO;
+        self.exp2relay5.hidden = NO;
+        self.exp2relay6.hidden = NO;
+        self.exp2relay7.hidden = NO;
+        self.exp2relay8.hidden = NO;
         [self saveData];
         [self turnOnRelayExp];
     }
@@ -615,6 +753,22 @@ else
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
+    self.exp2relay1Label = nil;
+    self.exp2relay2Label = nil;
+    self.exp2relay3Label = nil;
+    self.exp2relay4Label = nil;
+    self.exp2relay5Label = nil;
+    self.exp2relay6Label = nil;
+    self.exp2relay7Label = nil;
+    self.exp2relay8Label = nil;
+    self.exp2relay1 = nil;
+    self.exp2relay2 = nil;
+    self.exp2relay3 = nil;
+    self.exp2relay4 = nil;
+    self.exp2relay5 = nil;
+    self.exp2relay6 = nil;
+    self.exp2relay7 = nil;
+    self.exp2relay8 = nil;
     self.exprelay1Label = nil;
     self.exprelay2Label = nil;
     self.exprelay3Label = nil;
@@ -671,6 +825,22 @@ else
     self.exprelay6 = nil;
     self.exprelay7 = nil;
     self.exprelay8 = nil;
+    self.exp2relay1Label = nil;
+    self.exp2relay2Label = nil;
+    self.exp2relay3Label = nil;
+    self.exp2relay4Label = nil;
+    self.exp2relay5Label = nil;
+    self.exp2relay6Label = nil;
+    self.exp2relay7Label = nil;
+    self.exp2relay8Label = nil;
+    self.exp2relay1 = nil;
+    self.exp2relay2 = nil;
+    self.exp2relay3 = nil;
+    self.exp2relay4 = nil;
+    self.exp2relay5 = nil;
+    self.exp2relay6 = nil;
+    self.exp2relay7 = nil;
+    self.exp2relay8 = nil;
     self.scrollView = nil;
     self.relay1 = nil;
     self.relay2 = nil;
@@ -726,6 +896,22 @@ else
     [exprelay6 release];
     [exprelay7 release];
     [exprelay8 release];
+    [exp2relay1Label release];
+    [exp2relay2Label release];
+    [exp2relay3Label release];
+    [exp2relay4Label release];
+    [exp2relay5Label release];
+    [exp2relay6Label release];
+    [exp2relay7Label release];
+    [exp2relay8Label release];
+    [exp2relay1 release];
+    [exp2relay2 release];
+    [exp2relay3 release];
+    [exp2relay4 release];
+    [exp2relay5 release];
+    [exp2relay6 release];
+    [exp2relay7 release];
+    [exp2relay8 release];
     [scrollView release];
     [relay1 release];
     [relay2 release];

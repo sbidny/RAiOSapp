@@ -23,7 +23,11 @@
     BOOL isRelay01Active, isRelay02Active, isRelay03Active, isRelay04Active, isRelay05Active, isRelay06Active, isRelay07Active, isRelay08Active,
     isRelay01ONMask, isRelay02ONMask, isRelay03ONMask, isRelay04ONMask, isRelay05ONMask, isRelay06ONMask, isRelay07ONMask, isRelay08ONMask,
     isRelay01OFFMask, isRelay02OFFMask, isRelay03OFFMask, isRelay04OFFMask, isRelay05OFFMask, isRelay06OFFMask, isRelay07OFFMask, isRelay08OFFMask;
-    NSString *T1N, *T2N, *T3N, *R1N, *R2N, *R3N, *R4N, *R5N, *R6N, *R7N, *R8N, *R11N, *R12N, *R13N, *R14N, *R15N, *R16N, *R17N, *R18N;
+    
+    BOOL isRelay11Active, isRelay12Active, isRelay13Active, isRelay14Active, isRelay15Active, isRelay16Active, isRelay17Active, isRelay18Active,
+    isRelay11ONMask, isRelay12ONMask, isRelay13ONMask, isRelay14ONMask, isRelay15ONMask, isRelay16ONMask, isRelay17ONMask, isRelay18ONMask,
+    isRelay11OFFMask, isRelay12OFFMask, isRelay13OFFMask, isRelay14OFFMask, isRelay15OFFMask, isRelay16OFFMask, isRelay17OFFMask, isRelay18OFFMask;
+    NSString *T1N, *T2N, *T3N, *R1N, *R2N, *R3N, *R4N, *R5N, *R6N, *R7N, *R8N, *R11N, *R12N, *R13N, *R14N, *R15N, *R16N, *R17N, *R18N, *R21N, *R22N, *R23N, *R24N, *R25N, *R26N, *R27N, *R28N;
 
 }
 
@@ -124,7 +128,37 @@
 @property (nonatomic, assign) BOOL isRelay07OFFMask;
 @property (nonatomic, assign) BOOL isRelay08OFFMask;
 
-@property (nonatomic, copy) NSString *T1N, *T2N, *T3N, *R1N, *R2N, *R3N, *R4N, *R5N, *R6N, *R7N, *R8N, *R11N, *R12N, *R13N, *R14N, *R15N, *R16N, *R17N, *R18N;
+//for 3rd box
+
+@property (nonatomic, assign) BOOL isRelay11Active;
+@property (nonatomic, assign) BOOL isRelay12Active;
+@property (nonatomic, assign) BOOL isRelay13Active;
+@property (nonatomic, assign) BOOL isRelay14Active;
+@property (nonatomic, assign) BOOL isRelay15Active;
+@property (nonatomic, assign) BOOL isRelay16Active;
+@property (nonatomic, assign) BOOL isRelay17Active;
+@property (nonatomic, assign) BOOL isRelay18Active;
+
+@property (nonatomic, assign) BOOL isRelay11ONMask;
+@property (nonatomic, assign) BOOL isRelay12ONMask;
+@property (nonatomic, assign) BOOL isRelay13ONMask;
+@property (nonatomic, assign) BOOL isRelay14ONMask;
+@property (nonatomic, assign) BOOL isRelay15ONMask;
+@property (nonatomic, assign) BOOL isRelay16ONMask;
+@property (nonatomic, assign) BOOL isRelay17ONMask;
+@property (nonatomic, assign) BOOL isRelay18ONMask;
+
+@property (nonatomic, assign) BOOL isRelay11OFFMask;
+@property (nonatomic, assign) BOOL isRelay12OFFMask;
+@property (nonatomic, assign) BOOL isRelay13OFFMask;
+@property (nonatomic, assign) BOOL isRelay14OFFMask;
+@property (nonatomic, assign) BOOL isRelay15OFFMask;
+@property (nonatomic, assign) BOOL isRelay16OFFMask;
+@property (nonatomic, assign) BOOL isRelay17OFFMask;
+@property (nonatomic, assign) BOOL isRelay18OFFMask;
+
+
+@property (nonatomic, copy) NSString *T1N, *T2N, *T3N, *R1N, *R2N, *R3N, *R4N, *R5N, *R6N, *R7N, *R8N, *R11N, *R12N, *R13N, *R14N, *R15N, *R16N, *R17N, *R18N, *R21N, *R22N, *R23N, *R24N, *R25N, *R26N, *R27N, *R28N ;
 
 
 @end
