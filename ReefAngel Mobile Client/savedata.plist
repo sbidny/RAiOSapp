@@ -36,6 +36,22 @@
 	<string>ExpRelay7</string>
 	<key>ExpRelay8</key>
 	<string>ExpRelay8</string>
+	<key>Exp2Relay1</key>
+	<string>Exp2Relay1</string>
+	<key>Exp2Relay2</key>
+	<string>Exp2Relay2</string>
+	<key>Exp2Relay3</key>
+	<string>Exp2Relay3</string>
+	<key>Exp2Relay4</key>
+	<string>Exp2Relay4</string>
+	<key>Exp2Relay5</key>
+	<string>Exp2Relay5</string>
+	<key>Exp2Relay6</key>
+	<string>Exp2Relay6</string>
+	<key>Exp2Relay7</key>
+	<string>Exp2Relay7</string>
+	<key>Exp2Relay8</key>
+	<string>Exp2Relay8</string>
 	<key>Port</key>
 	<string>2000</string>
 	<key>EnteredURL</key>
