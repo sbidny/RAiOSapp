@@ -355,11 +355,11 @@
     //hides Sal if not added to ReefAngel Features.
     
     
-    if (params.SAL == NULL || [params.SAL intValue] == 0) {
-        //self.salinityLabel.hidden = YES;
-        //self.salinityValue.hidden = YES;
-        self.salinityLabel.hidden = NO;
-        self.salinityValue.hidden = NO;
+    if (params.SAL == NULL || params.SAL == 0) {
+        self.salinityLabel.hidden = YES;
+        self.salinityValue.hidden = YES;
+        // self.salinityLabel.hidden = NO;
+        // self.salinityValue.hidden = NO;
     }
     else if([params.SAL intValue] == 60)
     {
@@ -367,7 +367,6 @@
         self.salinityValue.hidden = NO;
         params.formattedSal = @"N/A";
     }
-
     else
     {
         self.salinityLabel.hidden = NO;
@@ -416,8 +415,8 @@
         self.AIWvalue.text = [[params.AIW stringValue] stringByAppendingString:@"%"];
         self.AIBvalue.text = [[params.AIB stringValue] stringByAppendingString:@"%"];
         self.AIRBvalue.text = [[params.AIRB stringValue] stringByAppendingString:@"%"];
-                self.salinityLabel.hidden = NO;
-                self.salinityValue.hidden = NO;
+        self.salinityLabel.hidden = YES;
+        self.salinityValue.hidden = YES;
                 params.formattedSal = [self formatSal:params.SAL];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 
@@ -485,10 +484,10 @@
 
 if (params.ORP == NULL || [params.ORP intValue] == 0)
 {
-    //self.orpValue.hidden = YES;
-    //self.orpLabel.hidden = YES;
-    self.orpValue.hidden = NO;
-    self.orpLabel.hidden = NO;
+    self.orpValue.hidden = YES;
+    self.orpLabel.hidden = YES;
+    // self.orpValue.hidden = NO;
+    // self.orpLabel.hidden = NO;
     self.orpValue.text = [params.ORP stringValue];
 
 }
@@ -498,6 +497,49 @@ else
     self.orpLabel.hidden = NO;
     self.orpValue.text = [params.ORP stringValue];
 }
+
+    
+    // AI 
+    if (params.AIB == NULL || [params.AIB intValue] == 0)
+    {
+        self.AIBvalue.hidden = YES;
+        self.AIBLabel.hidden = YES;
+        self.AIBvalue.text = [params.AIB stringValue];
+        
+    }
+    else
+    {
+        self.AIBvalue.hidden = NO;
+        self.AIBLabel.hidden = NO;
+        self.AIBvalue.text = [params.AIB stringValue];
+    }
+    if (params.AIRB == NULL || [params.AIRB intValue] == 0)
+    {
+        self.AIRBvalue.hidden = YES;
+        self.AIRBLabel.hidden = YES;
+        self.AIRBvalue.text = [params.AIRB stringValue];
+        
+    }
+    else
+    {
+        self.AIRBvalue.hidden = NO;
+        self.AIRBLabel.hidden = NO;
+        self.AIRBvalue.text = [params.AIRB stringValue];
+    }
+    
+    if (params.AIW == NULL || [params.AIW intValue] == 0)
+    {
+        self.AIWvalue.hidden = YES;
+        self.AIWLabel.hidden = YES;
+        self.AIWvalue.text = [params.AIW stringValue];
+        
+    }
+    else
+    {
+        self.AIWvalue.hidden = NO;
+        self.AIWLabel.hidden = NO;
+        self.AIWvalue.text = [params.AIW stringValue];
+    }
 /*
  EM Bits
  // 00011111
