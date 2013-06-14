@@ -685,7 +685,7 @@ else
     self.relay7.text = banner.R7N;
     self.relay8.text = banner.R8N;
 
-    if (![banner.R11N isEqualToString: @"Relay 11"] && banner.R1 > 0) {
+    if (![banner.R11N isEqualToString: @"Relay 11"]) { // This part isn't loaded yet, so it's failing: && banner.R1 > 0) {
         [self.relayExp setOn:YES];
         
         self.exprelay1.text = banner.R11N;
