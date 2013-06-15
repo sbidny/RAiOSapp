@@ -467,7 +467,7 @@
     self.pwmaValue.text = [[params.PWMA stringValue] stringByAppendingString:@"%"];
     self.pwmdValue.text = [[params.PWMD stringValue] stringByAppendingString:@"%"];
     self.wlValue.text = [[params.WL stringValue] stringByAppendingString:@"%"];
-    
+
     if (params.WL == NULL)
     {
         self.wlValue.hidden = YES;

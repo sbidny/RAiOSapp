@@ -37,7 +37,8 @@
 @property (readwrite, copy) NSString *fullUrl, *current_version, *directConnect;
 @property (nonatomic, retain) IBOutlet UILabel *temp1Label;
 @property (nonatomic, retain) IBOutlet UILabel *salinityLabel, *salinityValue, *orpLabel, *orpValue;
-@property (nonatomic, retain) IBOutlet UILabel *pwmaLabel, *pwmdLabel, *wlLabel;
+@property (nonatomic, retain) IBOutlet UILabel *pwmaLabel, *pwmdLabel;
+@property (nonatomic, retain) IBOutlet UILabel *wlLabel;
 @property (nonatomic, retain) IBOutlet UILabel *pwmaValue, *pwmdValue;
 @property (nonatomic, retain) IBOutlet UILabel *wlValue;
 @property (nonatomic, retain) IBOutlet UILabel *temp2Label, *temp2Value;
