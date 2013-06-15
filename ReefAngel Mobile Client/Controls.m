@@ -139,6 +139,23 @@
             {box2Relay8.on = raParam.isRelay08Active;b2R8Indicator.hidden = YES;}
             else
             {box2Relay8.on = raParam.isRelay08ONMask;b2R8Indicator.hidden = NO;}
+        } else {
+            self.relay21.hidden = YES;
+            self.relay22.hidden = YES;
+            self.relay23.hidden = YES;
+            self.relay24.hidden = YES;
+            self.relay25.hidden = YES;
+            self.relay26.hidden = YES;
+            self.relay27.hidden = YES;
+            self.relay28.hidden = YES;
+            self.box2Relay1.hidden = YES;
+            self.box2Relay2.hidden = YES;
+            self.box2Relay3.hidden = YES;
+            self.box2Relay4.hidden = YES;
+            self.box2Relay5.hidden = YES;
+            self.box2Relay6.hidden = YES;
+            self.box2Relay7.hidden = YES;
+            self.box2Relay8.hidden = YES;
         }
         
         if(self.box3.hidden == NO)
@@ -182,6 +199,23 @@
             {box3Relay8.on = raParam.isRelay18Active;b3R8Indicator.hidden = YES;}
             else
             {box3Relay8.on = raParam.isRelay18ONMask;b3R8Indicator.hidden = NO;}
+        } else {
+            self.relay31.hidden = YES;
+            self.relay32.hidden = YES;
+            self.relay33.hidden = YES;
+            self.relay34.hidden = YES;
+            self.relay35.hidden = YES;
+            self.relay36.hidden = YES;
+            self.relay37.hidden = YES;
+            self.relay38.hidden = YES;
+            self.box3Relay1.hidden = YES;
+            self.box3Relay2.hidden = YES;
+            self.box3Relay3.hidden = YES;
+            self.box3Relay4.hidden = YES;
+            self.box3Relay5.hidden = YES;
+            self.box3Relay6.hidden = YES;
+            self.box3Relay7.hidden = YES;
+            self.box3Relay8.hidden = YES;
         }
         
         raParam = nil;
@@ -353,7 +387,6 @@
     self.relay6.text = [restored objectForKey:@"Relay6"];
     self.relay7.text = [restored objectForKey:@"Relay7"];
     self.relay8.text = [restored objectForKey:@"Relay8"];
-    
     
     if([[restored objectForKey:@"ExpansionON"] isEqualToString: @"ON"])
     {
@@ -550,6 +583,11 @@
     NSString *receivedData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     self.response = [NSString stringWithString:receivedData];
     [receivedData release];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"savedata.plist"];
+    NSDictionary  *restored = [NSDictionary dictionaryWithContentsOfFile: path];
     
     NSRange range = [self.response rangeOfString:@"<MODE>" options:NSCaseInsensitiveSearch];
     if( range.location != NSNotFound ) {
@@ -571,7 +609,24 @@
         paramArray = [xmlParser fromXml:self.response withObject:raParam];
         
         raParam = [paramArray lastObject];
+    
+        if([[restored objectForKey:@"ExpansionON"] isEqualToString: @"ON"]) {
+                
+            if([raParam.REM intValue] == 0) {
+                [self.scrollView setContentSize:CGSizeMake(320, 570)];
+                self.box2.hidden = YES;
+                self.box3.hidden = YES;
+            } else if ([raParam.REM intValue] == 1) {
+                [self.scrollView setContentSize:CGSizeMake(320, 900)];
+                self.box2.hidden = NO;
+                self.box3.hidden = YES;
+            } else {
+                [self.scrollView setContentSize:CGSizeMake(320, 1200)];
+                self.box2.hidden = NO;
+                self.box3.hidden = NO;
+            }
 
+        }
         [self updateRelayBoxes:raParam];
         [self UpdateUI:raParam];
         if (self.response != NULL) {
