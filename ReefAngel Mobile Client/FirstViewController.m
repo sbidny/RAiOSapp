@@ -352,27 +352,6 @@
     }
 
     params.formattedpH = [self formatPh:params.PH];
-    //hides Sal if not added to ReefAngel Features.
-    
-    
-    if (params.SAL == NULL || params.SAL == 0) {
-        self.salinityLabel.hidden = YES;
-        self.salinityValue.hidden = YES;
-        // self.salinityLabel.hidden = NO;
-        // self.salinityValue.hidden = NO;
-    }
-    else if([params.SAL intValue] == 60)
-    {
-        self.salinityLabel.hidden = NO;
-        self.salinityValue.hidden = NO;
-        params.formattedSal = @"N/A";
-    }
-    else
-    {
-        self.salinityLabel.hidden = NO;
-        self.salinityValue.hidden = NO;
-       params.formattedSal = [self formatSal:params.SAL]; 
-    }
         if ([self.directConnect isEqualToString:@"ON"]) {
             
         
@@ -415,8 +394,8 @@
         self.AIWvalue.text = [[params.AIW stringValue] stringByAppendingString:@"%"];
         self.AIBvalue.text = [[params.AIB stringValue] stringByAppendingString:@"%"];
         self.AIRBvalue.text = [[params.AIRB stringValue] stringByAppendingString:@"%"];
-        self.salinityLabel.hidden = YES;
-        self.salinityValue.hidden = YES;
+        self.salinityLabel.hidden = NO;
+        self.salinityValue.hidden = NO;
                 params.formattedSal = [self formatSal:params.SAL];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 
@@ -481,6 +460,26 @@
 
     }
  */
+    
+//hides Sal if not added to ReefAngel Features.
+if (params.SAL == NULL || params.SAL == 0) {
+    self.salinityLabel.hidden = YES;
+    self.salinityValue.hidden = YES;
+    // self.salinityLabel.hidden = NO;
+    // self.salinityValue.hidden = NO;
+}
+else if([params.SAL intValue] == 60)
+{
+    self.salinityLabel.hidden = NO;
+    self.salinityValue.hidden = NO;
+    params.formattedSal = @"N/A";
+}
+else
+{
+    self.salinityLabel.hidden = NO;
+    self.salinityValue.hidden = NO;
+    params.formattedSal = [self formatSal:params.SAL];
+}
 
 if (params.ORP == NULL || [params.ORP intValue] == 0)
 {
