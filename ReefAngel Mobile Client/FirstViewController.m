@@ -11,6 +11,8 @@
 
 @implementation FirstViewController
 @synthesize temp1Label, temp2Label, temp3Label, pHLabel;
+@synthesize pwmaLabel, pwmdLabel, wlLabel;
+@synthesize pwmaValue, pwmdValue, wlValue;
 @synthesize wifiUrl, fullUrl,lastUpdatedLabel, current_version, directConnect;
 @synthesize enteredURL, response, tempScale, salinityLabel, salinityValue, temp2Value, temp3Value, temp1Value;
 @synthesize AIWvalue, AIBvalue, AIRBvalue, scrollView, AIWLabel, AIBLabel, AIRBLabel, receivedData, binaryEM,  RFWhiteValue, RFBlueValue, RFRoyalBlueValue, RFWhiteLabel, RFBlueLabel, RFRoyalBlueLabel, RFRedValue, RFRedLabel, RFGreenLabel, RFGreenValue, RFSpeedLabel, RFSpeedValue, RFModeLabel, RFModeValue, RFDurationLabel, RFDurationValue, orpLabel, orpValue;
@@ -320,6 +322,9 @@
         self.RFModeValue.text = [[params.RFM stringValue] stringByAppendingString:@"%"];
         self.RFSpeedValue.text = [[params.RFS stringValue] stringByAppendingString:@"%"];
         self.RFWhiteValue.text = [[params.RFW stringValue] stringByAppendingString:@"%"];
+        self.pwmaValue.text = [[params.PWMA stringValue] stringByAppendingString:@"%"];
+        self.pwmdValue.text = [[params.PWMD stringValue] stringByAppendingString:@"%"];
+        self.wlValue.text = [[params.WL stringValue] stringByAppendingString:@"%"];
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             
         }
@@ -328,7 +333,6 @@
             [self.scrollView setScrollEnabled:YES];
             [self.scrollView setContentSize:CGSizeMake(320, 650)];
         }
-        
 }
     
     params.formattedTemp1 = [self formatTemp:params.T1];
@@ -460,6 +464,20 @@
 
     }
  */
+    self.pwmaValue.text = [[params.PWMA stringValue] stringByAppendingString:@"%"];
+    self.pwmdValue.text = [[params.PWMD stringValue] stringByAppendingString:@"%"];
+    self.wlValue.text = [[params.WL stringValue] stringByAppendingString:@"%"];
+    
+    if (params.WL == NULL)
+    {
+        self.wlValue.hidden = YES;
+        self.wlLabel.hidden = YES;
+    }
+    else
+    {
+        self.wlValue.hidden = NO;
+        self.wlLabel.hidden = NO;
+    }
     
 //hides Sal if not added to ReefAngel Features.
 if (params.SAL == NULL || params.SAL == 0) {
@@ -708,6 +726,12 @@ else
     self.AIBLabel = nil;
     self.AIRBLabel = nil;
     self.AIWLabel = nil;
+    self.pwmaLabel = nil;
+    self.pwmdLabel = nil;
+    self.wlLabel = nil;
+    self.pwmaValue = nil;
+    self.pwmdValue = nil;
+    self.wlValue = nil;
     self.receivedData = nil;
     self.binaryEM = nil;
     [super viewDidUnload];
@@ -734,15 +758,20 @@ else
     [AIRBvalue release];
     [AIWvalue release];
     [scrollView release];
+    [wlValue release];
+    [pwmdValue release];
+    [pwmaValue release];
     [AIBLabel release];
     [AIRBLabel release];
-    [AIRBLabel release];
+    [AIWLabel release];
+    [pwmaLabel release];
+    [pwmdLabel release];
+    [wlLabel release];
     [receivedData release];
     [raParam release];
     [xmlParser release];
     [binaryEM release];
     [super dealloc];
-    
 }
 
 @end
