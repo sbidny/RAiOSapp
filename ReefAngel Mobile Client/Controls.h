@@ -33,7 +33,16 @@ IBOutlet UILabel *waterChangeLabel, *feedModeLabel, *buttonPressLabel;
 
 @property (readwrite, copy) NSString *wifiUrl, *enteredURL, *proxy;
 @property (readwrite, copy) NSString *fullUrl, *directConnect;
-@property (nonatomic, retain) IBOutlet UILabel *relay1, *relay2, *relay3, *relay4, *relay5, *relay6, *relay7, *relay8, *relay21, *relay22, *relay23, *relay24, *relay25, *relay26, *relay27, *relay28, *relay31, *relay32, *relay33, *relay34, *relay35, *relay36, *relay37, *relay38;
+@property (nonatomic, retain) IBOutlet UILabel *relay1, *relay2, *relay3, *relay4, *relay5, *relay6, *relay7, *relay8, *relay21, *relay22, *relay23, *relay24, *relay25, *relay26, *relay27, *relay28;
+@property (nonatomic, retain) IBOutlet UILabel *relay31;
+@property (nonatomic, retain) IBOutlet UILabel *relay32;
+@property (nonatomic, retain) IBOutlet UILabel *relay33;
+@property (nonatomic, retain) IBOutlet UILabel *relay34;
+@property (nonatomic, retain) IBOutlet UILabel *relay35;
+@property (nonatomic, retain) IBOutlet UILabel *relay36;
+@property (nonatomic, retain) IBOutlet UILabel *relay37;
+@property (nonatomic, retain) IBOutlet UILabel *relay38;
+
 @property (nonatomic, retain) IBOutlet UILabel *waterChangeLabel, *feedModeLabel, *buttonPressLabel;
 @property (nonatomic, retain) IBOutlet UILabel *lastUpdatedLabel;
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
@@ -54,8 +63,8 @@ IBOutlet UILabel *waterChangeLabel, *feedModeLabel, *buttonPressLabel;
 @property (nonatomic, retain) IBOutlet UIButton *b2R6Indicator;
 @property (nonatomic, retain) IBOutlet UIButton *b2R7Indicator;
 @property (nonatomic, retain) IBOutlet UIButton *b2R8Indicator;
-@property (nonatomic, retain) IBOutlet UISwitch *box3Relay1;
 @property (nonatomic, retain) IBOutlet UILabel *box3;
+@property (nonatomic, retain) IBOutlet UISwitch *box3Relay1;
 @property (nonatomic, retain) IBOutlet UISwitch *box3Relay2;
 @property (nonatomic, retain) IBOutlet UISwitch *box3Relay3;
 @property (nonatomic, retain) IBOutlet UISwitch *box3Relay4;

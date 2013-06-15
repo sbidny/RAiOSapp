@@ -15,7 +15,7 @@
 @synthesize pwmaValue, pwmdValue, wlValue;
 @synthesize wifiUrl, fullUrl,lastUpdatedLabel, current_version, directConnect;
 @synthesize enteredURL, response, tempScale, salinityLabel, salinityValue, temp2Value, temp3Value, temp1Value;
-@synthesize AIWvalue, AIBvalue, AIRBvalue, scrollView, AIWLabel, AIBLabel, AIRBLabel, receivedData, binaryEM,  RFWhiteValue, RFBlueValue, RFRoyalBlueValue, RFWhiteLabel, RFBlueLabel, RFRoyalBlueLabel, RFRedValue, RFRedLabel, RFGreenLabel, RFGreenValue, RFSpeedLabel, RFSpeedValue, RFModeLabel, RFModeValue, RFDurationLabel, RFDurationValue, orpLabel, orpValue;
+@synthesize AIWvalue, AIBvalue, AIRBvalue, scrollView, AIWLabel, AIBLabel, AIRBLabel, receivedData, binaryEM,  RFWhiteValue, RFBlueValue, RFRoyalBlueValue, RFWhiteLabel, RFBlueLabel, RFRoyalBlueLabel, RFRedValue, RFRedLabel, RFGreenLabel, RFGreenValue, RFILabel, RFIValue, RFSpeedLabel, RFSpeedValue, RFModeLabel, RFModeValue, RFDurationLabel, RFDurationValue, orpLabel, orpValue;
 
 - (void)viewDidLoad
 {
@@ -213,6 +213,7 @@
     self.AIRBvalue.text = @"";
     self.RFBlueValue.text = @"";
     self.RFGreenValue.text = @"";
+    self.RFIValue.text = @"";
     self.RFDurationValue.text = @"";
     self.RFModeValue.text = @"";
     self.RFRedValue.text = @"";
@@ -468,6 +469,40 @@
     self.pwmdValue.text = [[params.PWMD stringValue] stringByAppendingString:@"%"];
     self.wlValue.text = [[params.WL stringValue] stringByAppendingString:@"%"];
 
+    if (params.RFM != NULL) {
+        self.RFModeValue.text = [params.RFM stringValue];
+        self.RFSpeedValue.text = [params.RFS stringValue];
+        self.RFDurationValue.text = [params.RFD stringValue];
+
+        self.RFWhiteValue.text = [params.RFW stringValue];
+        self.RFBlueValue.text = [params.RFB stringValue];
+        self.RFRoyalBlueValue.text = [params.RFRB stringValue];
+        self.RFRedValue.text = [params.RFR stringValue];
+        self.RFGreenValue.text = [params.RFG stringValue];
+        self.RFIValue.text = [params.RFI stringValue];
+
+        self.RFModeLabel.hidden = NO;
+        self.RFSpeedLabel.hidden = NO;
+        self.RFDurationLabel.hidden = NO;
+        self.RFWhiteLabel.hidden = NO;
+        self.RFBlueLabel.hidden = NO;
+        self.RFRoyalBlueLabel.hidden = NO;
+        self.RFRedLabel.hidden = NO;
+        self.RFGreenLabel.hidden = NO;
+        self.RFILabel.hidden = NO;
+
+    } else {
+        self.RFModeLabel.hidden = YES;
+        self.RFSpeedLabel.hidden = YES;
+        self.RFDurationLabel.hidden = YES;
+        self.RFWhiteLabel.hidden = YES;
+        self.RFBlueLabel.hidden = YES;
+        self.RFRoyalBlueLabel.hidden = YES;
+        self.RFRedLabel.hidden = YES;
+        self.RFGreenLabel.hidden = YES;
+        self.RFILabel.hidden = YES;
+    }
+    
     if (params.WL == NULL)
     {
         self.wlValue.hidden = YES;
@@ -479,45 +514,33 @@
         self.wlLabel.hidden = NO;
     }
     
-//hides Sal if not added to ReefAngel Features.
-if (params.SAL == NULL || params.SAL == 0) {
-    self.salinityLabel.hidden = YES;
-    self.salinityValue.hidden = YES;
-    // self.salinityLabel.hidden = NO;
-    // self.salinityValue.hidden = NO;
-}
-else if([params.SAL intValue] == 60)
-{
-    self.salinityLabel.hidden = NO;
-    self.salinityValue.hidden = NO;
-    params.formattedSal = @"N/A";
-}
-else
-{
-    self.salinityLabel.hidden = NO;
-    self.salinityValue.hidden = NO;
-    params.formattedSal = [self formatSal:params.SAL];
-}
+    if (params.SAL == NULL) {
+        self.salinityLabel.hidden = YES;
+        self.salinityValue.hidden = YES;
+    }
+    else
+    {
+        self.salinityLabel.hidden = NO;
+        self.salinityValue.hidden = NO;
+        params.formattedSal = [self formatSal:params.SAL];
+    }
 
-if (params.ORP == NULL || [params.ORP intValue] == 0)
-{
-    self.orpValue.hidden = YES;
-    self.orpLabel.hidden = YES;
-    // self.orpValue.hidden = NO;
-    // self.orpLabel.hidden = NO;
-    self.orpValue.text = [params.ORP stringValue];
-
-}
-else
-{
-    self.orpValue.hidden = NO;
-    self.orpLabel.hidden = NO;
-    self.orpValue.text = [params.ORP stringValue];
-}
+    if (params.ORP == NULL)
+    {
+        self.orpValue.hidden = YES;
+        self.orpLabel.hidden = YES;
+        self.orpValue.text = [params.ORP stringValue];
+    }
+    else
+    {
+        self.orpValue.hidden = NO;
+        self.orpLabel.hidden = NO;
+        self.orpValue.text = [params.ORP stringValue];
+    }
 
     
     // AI 
-    if (params.AIB == NULL || [params.AIB intValue] == 0)
+    if (params.AIB == NULL)
     {
         self.AIBvalue.hidden = YES;
         self.AIBLabel.hidden = YES;
@@ -530,7 +553,7 @@ else
         self.AIBLabel.hidden = NO;
         self.AIBvalue.text = [params.AIB stringValue];
     }
-    if (params.AIRB == NULL || [params.AIRB intValue] == 0)
+    if (params.AIRB == NULL)
     {
         self.AIRBvalue.hidden = YES;
         self.AIRBLabel.hidden = YES;
@@ -544,7 +567,7 @@ else
         self.AIRBvalue.text = [params.AIRB stringValue];
     }
     
-    if (params.AIW == NULL || [params.AIW intValue] == 0)
+    if (params.AIW == NULL)
     {
         self.AIWvalue.hidden = YES;
         self.AIWLabel.hidden = YES;
