@@ -11,9 +11,11 @@
 
 @implementation FirstViewController
 @synthesize temp1Label, temp2Label, temp3Label, pHLabel;
+@synthesize pwmaLabel, pwmdLabel, wlLabel;
+@synthesize pwmaValue, pwmdValue, wlValue;
 @synthesize wifiUrl, fullUrl,lastUpdatedLabel, current_version, directConnect;
 @synthesize enteredURL, response, tempScale, salinityLabel, salinityValue, temp2Value, temp3Value, temp1Value;
-@synthesize AIWvalue, AIBvalue, AIRBvalue, scrollView, AIWLabel, AIBLabel, AIRBLabel, receivedData, binaryEM,  RFWhiteValue, RFBlueValue, RFRoyalBlueValue, RFWhiteLabel, RFBlueLabel, RFRoyalBlueLabel, RFRedValue, RFRedLabel, RFGreenLabel, RFGreenValue, RFSpeedLabel, RFSpeedValue, RFModeLabel, RFModeValue, RFDurationLabel, RFDurationValue, orpLabel, orpValue;
+@synthesize AIWvalue, AIBvalue, AIRBvalue, scrollView, AIWLabel, AIBLabel, AIRBLabel, receivedData, binaryEM,  RFWhiteValue, RFBlueValue, RFRoyalBlueValue, RFWhiteLabel, RFBlueLabel, RFRoyalBlueLabel, RFRedValue, RFRedLabel, RFGreenLabel, RFGreenValue, RFILabel, RFIValue, RFSpeedLabel, RFSpeedValue, RFModeLabel, RFModeValue, RFDurationLabel, RFDurationValue, orpLabel, orpValue;
 
 - (void)viewDidLoad
 {
@@ -211,6 +213,7 @@
     self.AIRBvalue.text = @"";
     self.RFBlueValue.text = @"";
     self.RFGreenValue.text = @"";
+    self.RFIValue.text = @"";
     self.RFDurationValue.text = @"";
     self.RFModeValue.text = @"";
     self.RFRedValue.text = @"";
@@ -320,6 +323,9 @@
         self.RFModeValue.text = [[params.RFM stringValue] stringByAppendingString:@"%"];
         self.RFSpeedValue.text = [[params.RFS stringValue] stringByAppendingString:@"%"];
         self.RFWhiteValue.text = [[params.RFW stringValue] stringByAppendingString:@"%"];
+        self.pwmaValue.text = [[params.PWMA stringValue] stringByAppendingString:@"%"];
+        self.pwmdValue.text = [[params.PWMD stringValue] stringByAppendingString:@"%"];
+        self.wlValue.text = [[params.WL stringValue] stringByAppendingString:@"%"];
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             
         }
@@ -328,7 +334,6 @@
             [self.scrollView setScrollEnabled:YES];
             [self.scrollView setContentSize:CGSizeMake(320, 650)];
         }
-        
 }
     
     params.formattedTemp1 = [self formatTemp:params.T1];
@@ -352,28 +357,6 @@
     }
 
     params.formattedpH = [self formatPh:params.PH];
-    //hides Sal if not added to ReefAngel Features.
-    
-    
-    if (params.SAL == NULL || [params.SAL intValue] == 0) {
-        //self.salinityLabel.hidden = YES;
-        //self.salinityValue.hidden = YES;
-        self.salinityLabel.hidden = NO;
-        self.salinityValue.hidden = NO;
-    }
-    else if([params.SAL intValue] == 60)
-    {
-        self.salinityLabel.hidden = NO;
-        self.salinityValue.hidden = NO;
-        params.formattedSal = @"N/A";
-    }
-
-    else
-    {
-        self.salinityLabel.hidden = NO;
-        self.salinityValue.hidden = NO;
-       params.formattedSal = [self formatSal:params.SAL]; 
-    }
         if ([self.directConnect isEqualToString:@"ON"]) {
             
         
@@ -416,8 +399,8 @@
         self.AIWvalue.text = [[params.AIW stringValue] stringByAppendingString:@"%"];
         self.AIBvalue.text = [[params.AIB stringValue] stringByAppendingString:@"%"];
         self.AIRBvalue.text = [[params.AIRB stringValue] stringByAppendingString:@"%"];
-                self.salinityLabel.hidden = NO;
-                self.salinityValue.hidden = NO;
+        self.salinityLabel.hidden = NO;
+        self.salinityValue.hidden = NO;
                 params.formattedSal = [self formatSal:params.SAL];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 
@@ -482,22 +465,121 @@
 
     }
  */
+    self.pwmaValue.text = [[params.PWMA stringValue] stringByAppendingString:@"%"];
+    self.pwmdValue.text = [[params.PWMD stringValue] stringByAppendingString:@"%"];
+    self.wlValue.text = [[params.WL stringValue] stringByAppendingString:@"%"];
 
-if (params.ORP == NULL || [params.ORP intValue] == 0)
-{
-    //self.orpValue.hidden = YES;
-    //self.orpLabel.hidden = YES;
-    self.orpValue.hidden = NO;
-    self.orpLabel.hidden = NO;
-    self.orpValue.text = [params.ORP stringValue];
+    if (params.RFM != NULL) {
+        self.RFModeValue.text = [params.RFM stringValue];
+        self.RFSpeedValue.text = [params.RFS stringValue];
+        self.RFDurationValue.text = [params.RFD stringValue];
 
-}
-else
-{
-    self.orpValue.hidden = NO;
-    self.orpLabel.hidden = NO;
-    self.orpValue.text = [params.ORP stringValue];
-}
+        self.RFWhiteValue.text = [params.RFW stringValue];
+        self.RFBlueValue.text = [params.RFB stringValue];
+        self.RFRoyalBlueValue.text = [params.RFRB stringValue];
+        self.RFRedValue.text = [params.RFR stringValue];
+        self.RFGreenValue.text = [params.RFG stringValue];
+        self.RFIValue.text = [params.RFI stringValue];
+
+        self.RFModeLabel.hidden = NO;
+        self.RFSpeedLabel.hidden = NO;
+        self.RFDurationLabel.hidden = NO;
+        self.RFWhiteLabel.hidden = NO;
+        self.RFBlueLabel.hidden = NO;
+        self.RFRoyalBlueLabel.hidden = NO;
+        self.RFRedLabel.hidden = NO;
+        self.RFGreenLabel.hidden = NO;
+        self.RFILabel.hidden = NO;
+
+    } else {
+        self.RFModeLabel.hidden = YES;
+        self.RFSpeedLabel.hidden = YES;
+        self.RFDurationLabel.hidden = YES;
+        self.RFWhiteLabel.hidden = YES;
+        self.RFBlueLabel.hidden = YES;
+        self.RFRoyalBlueLabel.hidden = YES;
+        self.RFRedLabel.hidden = YES;
+        self.RFGreenLabel.hidden = YES;
+        self.RFILabel.hidden = YES;
+    }
+    
+    if (params.WL == NULL)
+    {
+        self.wlValue.hidden = YES;
+        self.wlLabel.hidden = YES;
+    }
+    else
+    {
+        self.wlValue.hidden = NO;
+        self.wlLabel.hidden = NO;
+    }
+    
+    if (params.SAL == NULL) {
+        self.salinityLabel.hidden = YES;
+        self.salinityValue.hidden = YES;
+    }
+    else
+    {
+        self.salinityLabel.hidden = NO;
+        self.salinityValue.hidden = NO;
+        params.formattedSal = [self formatSal:params.SAL];
+    }
+
+    if (params.ORP == NULL)
+    {
+        self.orpValue.hidden = YES;
+        self.orpLabel.hidden = YES;
+        self.orpValue.text = [params.ORP stringValue];
+    }
+    else
+    {
+        self.orpValue.hidden = NO;
+        self.orpLabel.hidden = NO;
+        self.orpValue.text = [params.ORP stringValue];
+    }
+
+    
+    // AI 
+    if (params.AIB == NULL)
+    {
+        self.AIBvalue.hidden = YES;
+        self.AIBLabel.hidden = YES;
+        self.AIBvalue.text = [params.AIB stringValue];
+        
+    }
+    else
+    {
+        self.AIBvalue.hidden = NO;
+        self.AIBLabel.hidden = NO;
+        self.AIBvalue.text = [params.AIB stringValue];
+    }
+    if (params.AIRB == NULL)
+    {
+        self.AIRBvalue.hidden = YES;
+        self.AIRBLabel.hidden = YES;
+        self.AIRBvalue.text = [params.AIRB stringValue];
+        
+    }
+    else
+    {
+        self.AIRBvalue.hidden = NO;
+        self.AIRBLabel.hidden = NO;
+        self.AIRBvalue.text = [params.AIRB stringValue];
+    }
+    
+    if (params.AIW == NULL)
+    {
+        self.AIWvalue.hidden = YES;
+        self.AIWLabel.hidden = YES;
+        self.AIWvalue.text = [params.AIW stringValue];
+        
+    }
+    else
+    {
+        self.AIWvalue.hidden = NO;
+        self.AIWLabel.hidden = NO;
+        self.AIWvalue.text = [params.AIW stringValue];
+    }
 /*
  EM Bits
  // 00011111
@@ -667,6 +749,12 @@ else
     self.AIBLabel = nil;
     self.AIRBLabel = nil;
     self.AIWLabel = nil;
+    self.pwmaLabel = nil;
+    self.pwmdLabel = nil;
+    self.wlLabel = nil;
+    self.pwmaValue = nil;
+    self.pwmdValue = nil;
+    self.wlValue = nil;
     self.receivedData = nil;
     self.binaryEM = nil;
     [super viewDidUnload];
@@ -693,15 +781,20 @@ else
     [AIRBvalue release];
     [AIWvalue release];
     [scrollView release];
+    [wlValue release];
+    [pwmdValue release];
+    [pwmaValue release];
     [AIBLabel release];
     [AIRBLabel release];
-    [AIRBLabel release];
+    [AIWLabel release];
+    [pwmaLabel release];
+    [pwmdLabel release];
+    [wlLabel release];
     [receivedData release];
     [raParam release];
     [xmlParser release];
     [binaryEM release];
     [super dealloc];
-    
 }
 
 @end

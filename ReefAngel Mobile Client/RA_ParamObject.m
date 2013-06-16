@@ -18,9 +18,11 @@
             isRelay7Active, isRelay8Active, isRelay1ONMask, isRelay2ONMask, isRelay3ONMask, isRelay4ONMask, isRelay5ONMask,
             isRelay6ONMask, isRelay7ONMask, isRelay8ONMask, isRelay1OFFMask, isRelay2OFFMask, isRelay3OFFMask, isRelay4OFFMask, isRelay5OFFMask, isRelay6OFFMask, isRelay7OFFMask, isRelay8OFFMask,isRelay01Active, isRelay02Active, isRelay03Active, isRelay04Active, isRelay05Active, isRelay06Active, isRelay07Active, isRelay08Active,
 isRelay01ONMask, isRelay02ONMask, isRelay03ONMask, isRelay04ONMask, isRelay05ONMask, isRelay06ONMask, isRelay07ONMask, isRelay08ONMask,
-isRelay01OFFMask, isRelay02OFFMask, isRelay03OFFMask, isRelay04OFFMask, isRelay05OFFMask, isRelay06OFFMask, isRelay07OFFMask, isRelay08OFFMask, PWMA, PWMD, SAL, formattedSal;
-@synthesize T1N, T2N, T3N, R1N, R2N, R3N, R4N, R5N, R6N, R7N, R8N, R11N, R12N, R13N, R14N, R15N, R16N, R17N, R18N;
-@synthesize AIW, AIB, AIRB, RFM, RFS, RFD, RFW, RFB, RFG, RFR, RFI, ORP, PWME0, LOGDATE, REM, EM, RFRB;
+isRelay01OFFMask, isRelay02OFFMask, isRelay03OFFMask, isRelay04OFFMask, isRelay05OFFMask, isRelay06OFFMask, isRelay07OFFMask, isRelay08OFFMask,isRelay11Active, isRelay12Active, isRelay13Active, isRelay14Active, isRelay15Active, isRelay16Active, isRelay17Active, isRelay18Active,
+isRelay11ONMask, isRelay12ONMask, isRelay13ONMask, isRelay14ONMask, isRelay15ONMask, isRelay16ONMask, isRelay17ONMask, isRelay18ONMask,
+isRelay11OFFMask, isRelay12OFFMask, isRelay13OFFMask, isRelay14OFFMask, isRelay15OFFMask, isRelay16OFFMask, isRelay17OFFMask, isRelay18OFFMask, PWMA, PWMD, SAL, formattedSal;
+@synthesize T1N, T2N, T3N, R1N, R2N, R3N, R4N, R5N, R6N, R7N, R8N, R11N, R12N, R13N, R14N, R15N, R16N, R17N, R18N, R21N, R22N, R23N, R24N, R25N, R26N, R27N, R28N;
+@synthesize AIW, AIB, AIRB, RFM, RFS, RFD, RFW, RFB, RFG, RFR, RFI, ORP, PWME0, LOGDATE, REM, EM, WL, RFRB;
 
 -(void) dealloc
 {
@@ -55,6 +57,7 @@ isRelay01OFFMask, isRelay02OFFMask, isRelay03OFFMask, isRelay04OFFMask, isRelay0
     [ATOHIGH release];
     [PWMD release];
     [PWMA release];
+    [WL release];
     [ORP release];
     
     [T1N release];
@@ -76,6 +79,14 @@ isRelay01OFFMask, isRelay02OFFMask, isRelay03OFFMask, isRelay04OFFMask, isRelay0
     [R16N release];
     [R17N release];
     [R18N release];
+    [R21N release];
+    [R22N release];
+    [R23N release];
+    [R24N release];
+    [R25N release];
+    [R26N release];
+    [R27N release];
+    [R28N release];
     
     [RFB release];
     [RFD release];
